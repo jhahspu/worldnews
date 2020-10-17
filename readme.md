@@ -1,3 +1,3 @@
-# wn
+# World News
 
 ### News PWA - no libraries
