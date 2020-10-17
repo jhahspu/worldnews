@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@mixin container {
+  width: 88%;
+  max-width: 976px;
+  margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+@mixin button {
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: $main-7;
+  color: $main-0;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.4);
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover, &:active {
+    background-color: $main-5;
+  }
+}
+
+$main-0: hsla(144, 4, 6, 1);
+$main-1: hsla(144, 4, 16, 1);
+$main-2: hsla(144, 4, 26, 1);
+$main-3: hsla(144, 4, 36, 1);
+$main-4: hsla(144, 4, 46, 1);
+$main-5: hsla(144, 4, 56, 1);
+$main-6: hsla(144, 4, 66, 1);
+$main-7: hsla(144, 4, 76, 1);
+$main-8: hsla(144, 4, 86, 1);
+$main-9: hsla(144, 4, 96, 1);
+$acc: hsla(144, 73, 36, 1);
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+
+  color: $main-0;
+  background-color: $main-8;
+
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $main-0;
+    color: $main-8;
+  }
+
+}
+
+h1, h2, h3 { font-weight: 400; }
+h1 { font-size: 2rem; margin: 1rem 0; }
+h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+
+a, a:visited, a:focus { color: currentColor; text-decoration: none; }
+
+header {
+  @include container();
+  #country {
+    color: $acc;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+nav {
+  @include container();
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 4rem);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+
+  .country {
+    @include button();
+  }
+
+  #scrllTop {
+    display: none;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 0%;
+    margin-bottom: 0;
+    padding: 0.7rem 0.5rem 1.3rem 0.5rem;
+    gap: 0.5rem;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: $main-2;
+    border-radius: 0;
+    opacity: 0.9;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 999;
+    #scrllTop {
+      display: inline-block;
+      @include button();
+      pointer-events: all;
+    }
+  }
+
+}
+
+main {
+  @include container();
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 2rem;
+
+  news-article {
+    display: flex;
+    border-radius: 0.5rem;
+    background-color: $main-9;
+    box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
+
+    a {
+      padding: 1rem;
+
+      h2 {
+        font-size: 1.4rem;
+        transition: color 0.24s ease-in-out;
+      }
+
+      .img {
+        overflow: hidden;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        img {
+          width: 100%;
+          overflow: hidden;
+          transition: 20s;
+        }
+      }
+      
+      p {
+        padding-top: 0.6rem;
+      }
+
+      &:hover h2 {
+        color: $main-5;
+      }
+      &:hover img {
+        transform: scale(1.2);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $main-1;
+      color: $main-8;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 2rem;
+    grid-template-columns: 1fr;
+  }
+
+}
+
+footer {
+  min-height: 4rem;
+}
+
+#scrllTop-1 {
+  @include button();
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  padding: 0.5rem 1rem;
+  background-color: $main-3;
+  font-size: 2rem;
+  &.hidden {
+    display: none;
+    pointer-events: none;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+    pointer-events: none;
+  }
+}
